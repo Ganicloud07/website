@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In — Acme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #0f172a; /* deep navy */
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.06);
+      --accent: #7c3aed; /* violet */
+      --accent-2: #06b6d4; /* teal */
+      --muted: rgba(255,255,255,0.7);
+      --radius: 14px;
+      --max-width: 980px;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(600px 400px at 10% 20%, rgba(124,58,237,0.14), transparent),
+                  radial-gradient(500px 350px at 90% 80%, rgba(6,182,212,0.08), transparent),
+                  linear-gradient(180deg,var(--bg-1) 0%, #071029 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      color:#e6eef8;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:32px;
+      align-items:center;
+    }
+
+    .hero{
+      padding:42px 36px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      min-height:420px;
+    }
+
+    .hero h1{margin:0 0 10px;font-size:28px;letter-spacing:-0.3px}
+    .hero p{margin:0;color:var(--muted);line-height:1.5}
+
+    .features{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+
+    .feat{
+      display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);
+    }
+    .dot{
+      width:36px;height:36px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 6px 18px rgba(12,8,20,0.6);
+    }
+    .feat h4{margin:0;font-size:14px}
+    .feat p{margin:3px 0 0;font-size:13px;color:var(--muted)}
+
+    /* sign card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      padding:28px;border-radius:18px;backdrop-filter: blur(8px);
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 8px 40px rgba(3,7,18,0.6);
+    }
+
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .logo{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));font-weight:700}
+    .brand h3{margin:0;font-size:16px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+
+    form{margin-top:8px}
+    .field{margin-bottom:14px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    input[type="email"], input[type="password"]{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;font-size:14px;
+      outline:none;transition:box-shadow .15s, border-color .15s;
+    }
+    input:focus{box-shadow:0 6px 18px rgba(12,8,30,0.5);border-color:rgba(124,58,237,0.32)}
+
+    .row{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .remember{display:flex;gap:8px;align-items:center}
+    .btn{
+      display:inline-block;padding:12px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:600;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;width:100%;font-size:15px;box-shadow:0 8px 28px rgba(7,5,20,0.5);
+    }
+
+    .alt{margin-top:14px;text-align:center;font-size:13px;color:var(--muted)}
+    .socials{display:flex;gap:8px;justify-content:center;margin-top:12px}
+    .socials button{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;cursor:pointer}
+
+    /* small screens */
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;}
+      .hero{order:2}
+      .card{order:1}
+    }
+
+    /* helper */
+    .muted{color:var(--muted)}
+
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <section class="hero" aria-labelledby="welcome">
+      <h1 id="welcome">Welcome back — sign in to continue</h1>
+      <p class="muted">Access your account, manage projects, and collaborate with your team. Fast, secure and delightful.</p>
+
+      <div class="features" aria-hidden="true">
+        <div class="feat">
+          <div class="dot">🔒</div>
+          <div>
+            <h4>Secure by default</h4>
+            <p>Two-factor ready, encrypted data at rest and in transit.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <div class="dot">⚡</div>
+          <div>
+            <h4>Fast & reliable</h4>
+            <p>Optimised servers and CDN friendly for instant loads.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <div class="dot">👥</div>
+          <div>
+            <h4>Team friendly</h4>
+            <p>Invite teammates, manage roles, and share resources.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <div class="dot">🔧</div>
+          <div>
+            <h4>Developer first</h4>
+            <p>Clean API, great docs, and simple CLI tooling.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card" aria-labelledby="signin">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <h3 id="signin">Sign in to Acme</h3>
+          <p class="muted">Enter your credentials to continue</p>
+        </div>
+      </div>
+
+      <form onsubmit="event.preventDefault();alert('Submitted (demo)');" autocomplete="on">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@company.com" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div style="position:relative">
+            <input id="password" name="password" type="password" placeholder="••••••••" required />
+            <button type="button" aria-label="toggle password" onclick="togglePassword()" style="position:absolute;right:8px;top:8px;border:none;background:transparent;color:var(--muted);padding:6px;cursor:pointer">Show</button>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom:14px">
+          <label class="remember"><input type="checkbox" /> <span style="font-size:13px;color:var(--muted)">Remember me</span></label>
+          <a href="#" style="font-size:13px;color:var(--muted);text-decoration:none">Forgot password?</a>
+        </div>
+
+        <div class="field">
+          <button class="btn" type="submit">Sign In</button>
+        </div>
+
+        <div class="alt">Or continue with</div>
+        <div class="socials">
+          <button title="Sign in with Google">G</button>
+          <button title="Sign in with GitHub">GH</button>
+          <button title="Sign in with Apple"></button>
+        </div>
+
+        <p class="alt" style="margin-top:18px">Don't have an account? <a href="#" style="color:whitesmoke;text-decoration:underline">Create one</a></p>
+      </form>
+    </aside>
+  </main>
+
+  <script>
+    function togglePassword(){
+      const el = document.getElementById('password');
+      if(!el) return;
+      if(el.type === 'password'){ el.type = 'text'; } else { el.type = 'password'; }
+    }
+  </script>
+</body>
+</html>
